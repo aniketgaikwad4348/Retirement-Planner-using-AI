@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retirement Planner - Results</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #ece9e6, #ffffff);
+            font-family: 'Roboto', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .result-container, .investment-container {
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s;
+        }
+        .investment-container:hover {
+            transform: scale(1.02);
+        }
+        .investment-container {
+            border-left: 5px solid #007bff;
+            position: relative;
+            flex: 1;
+            margin-right: 20px;
+            min-width: 300px;
+        }
+        .investment-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: #007bff;
+        }
+        .investment-container h4 {
+            color: #007bff;
+        }
+        .warning-container {
+            padding: 20px;
+            background-color: #ffeeba;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .investment-name {
+            font-weight: bold;
+            color: #343a40;
+        }
+        .trend-score {
+            color: #28a745;
+        }
+        .expected-growth {
+            color: #dc3545;
+        }
+        .back-btn {
+            background-color: #007bff;
+            color: #ffffff;
+            border-radius: 50px;
+            margin-bottom: 20px;
+        }
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+        .text-center {
+            margin-bottom: 30px;
+        }
+        .investments-container {
+            display: flex;
+            justify-content: space-between;
+            overflow-x: auto;
+        }
+        .investment-container {
+            margin-right: 20px;
+        }
+        .investment-container:last-child {
+            margin-right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Retirement Planning Results</h1>
+        <div class="result-container">
+            <h3>Results</h3>
+            <p><strong>Required Savings:</strong> RS.{{ required_savings }}</p>
+        </div>
+        <h3>Suggested Investments</h3>
+        <div class="investments-container">
+            {% if suggested_investments %}
+                {% for investment in suggested_investments %}
+                    <div class="investment-container">
+                        <i class="fas fa-chart-line investment-icon"></i>
+                        <h4>{{ investment.name }}</h4>
+                        <p><span class="investment-name">Name:</span> {{ investment.name }}</p>
+                        <p><span class="trend-score">Trend Score:</span> {{ investment.trend_score }}</p>
+                        <p><span class="expected-growth">Expected Growth:</span> {{ investment.expected_growth }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="investment-container">
+                    <p>No suggested investments available.</p>
+                </div>
+            {% endif %}
+        </div>
+        <div class="warning-container mt-4">
+            <h4>Important Note Before Investing:</h4>
+            <p>Investments in financial markets carry inherent risks. Make sure to conduct thorough research or consult with a financial advisor before making any investment decisions.</p>
+        </div>
+        <a href="/" class="btn back-btn mt-3">Back to Planner</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-dark text-light">
+        <div class="container text-center">
+            <span class="text-muted">© 2024 Retirement Planner.ai. All rights reserved.</span>
+        </div>
+    </footer>
+
+
+</body>
+</html>

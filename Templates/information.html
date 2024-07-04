@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retirement Planner</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Retirement Planner</h1>
+        <form action="/predict" method="post">
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" class="form-control" id="age" name="age" required>
+            </div>
+            <div class="form-group">
+                <label for="income">Income:</label>
+                <input type="number" class="form-control" id="income" name="income" required>
+            </div>
+            <div class="form-group">
+                <label for="current_savings">Current Savings:</label>
+                <input type="number" class="form-control" id="current_savings" name="current_savings" required>
+            </div>
+            <div class="form-group">
+                <label for="risk_tolerance">Risk Tolerance:</label>
+                <select class="form-control" id="risk_tolerance" name="risk_tolerance" required>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="preferred_investment">Preferred Investment:</label>
+                <select class="form-control" id="preferred_investment" name="preferred_investment" required>
+                    <option value="stocks">Stocks</option>
+                    <option value="bonds">Bonds</option>
+                    <option value="real_estate">Real Estate</option>
+                    <option value="mutual_funds">Mutual Funds</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
